@@ -1,3 +1,9 @@
+import processing.net.*;
+
+Client myClient;
+
+int port = 10001;
+
 //Main navigation buttons
 Button chat, profile, inbox;
 
@@ -11,14 +17,17 @@ int page;
 
 int chatno;
 
+ArrayList<TEXTBOX> textboxes = new ArrayList<TEXTBOX>();
+
 void setup(){
  size(1000,700);
  surface.setResizable(true);
  
- textAlign(CENTER, CENTER);
+ myClient = new Client(this, "localhost", port);
  
  stroke(0);
  strokeWeight(1.5);
+ 
  
  //Main navigation button constructing
  chat = new Button ("Available chats", 0, 0);
@@ -29,6 +38,9 @@ void setup(){
  chat1 = new Button ("Chad", 0, height/2);
  chat2 = new Button ("Chris", 0, (height/2) + Button.H);
  chat3 = new Button ("Robert", 0, (height/2) + (Button.H*2));
+ 
+ textBoxLayout();
+ 
 }
 
 void draw(){
@@ -41,8 +53,25 @@ void draw(){
  method("page"+page);
  
  method("chat"+chatno);
+ 
+ if (chatno == 1) {
+  for (TEXTBOX t : textboxes) {
+   t.DRAW();
+ }
+ }
 }
 
+void textBoxLayout(){
+  TEXTBOX chadrec = new TEXTBOX(width/2, height/2, 300, 35);
+  textboxes.add(chadrec);
+  
+  TEXTBOX chrisrec = new TEXTBOX(width/2, height/2, 300, 35);
+  textboxes.add(chrisrec);
+  
+  TEXTBOX robertrec = new TEXTBOX(width/2, height/2, 300, 35);
+  textboxes.add(robertrec);
+}
+  
 
 void mouseMoved(){
   
@@ -60,12 +89,31 @@ void mouseMoved(){
 void mousePressed(){
   
   // Main page navigation
-  if (chat.isHovering) page = 0;
-  if (profile.isHovering) page = 1;
-  if (inbox.isHovering) page = 2;
+  if (chat.isHovering) {
+       page = 0;
+       chatno = 0;
+  }
+  if (profile.isHovering){
+       page = 1;
+       chatno = 0;
+  }
+  if (inbox.isHovering) {
+       page = 2;
+       chatno = 0;
+  }
   
   // Chat page navigation
   if (chat1.isHovering) chatno = 1;
   if (chat2.isHovering) chatno = 2;
   if (chat3.isHovering) chatno = 3;
+  
+  for (TEXTBOX t: textboxes) {
+    t.PRESSED (mouseX, mouseY);
+  }
+}
+
+void keyPressed() {
+  for (TEXTBOX t : textboxes) {
+    t.KEYPRESSED(key, keyCode);
+  }
 }

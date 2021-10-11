@@ -1,5 +1,5 @@
 class Button {
-  static final int W = 150, H = 80, TXTSZ = 040;
+  static final int W = 200, H = 80, TXTSZ = 18;
   static final color BTNC = #00A0A0, HOVC = #00FFFF, TXTC = 0;
  
   final String label;
@@ -22,7 +22,8 @@ class Button {
     rect(x, y, W, H);
  
     fill(TXTC);
-    text(label, x + W/2, y + H/2);
+    textSize(TXTSZ);
+    text(label, x + W/5, y + H/2);
   }
  
   boolean isInside() {
