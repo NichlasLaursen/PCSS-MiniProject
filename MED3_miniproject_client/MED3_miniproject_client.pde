@@ -13,11 +13,17 @@ Button chat0, chat1, chat2, chat3;
 //Background color
 int backCl = #818181;
 
+boolean send = false;
+String msg = "";
+float msgH = height/4;
+int msgN = 0;
+
 int page;
 
 int chatno;
 
 ArrayList<TEXTBOX> textboxes = new ArrayList<TEXTBOX>();
+ArrayList<String> msgs = new ArrayList<String>();
 
 void setup(){
  size(1000,700);
@@ -35,9 +41,9 @@ void setup(){
  inbox = new Button("Inbox", 0, 0 + (Button.H*2));
  
  //Constructing buttons to chat with dudes
- chat1 = new Button ("Chad", 0, height/2);
- chat2 = new Button ("Chris", 0, (height/2) + Button.H);
- chat3 = new Button ("Robert", 0, (height/2) + (Button.H*2));
+ chat1 = new Button ("Chad", 0, height-(Button.H*3));
+ chat2 = new Button ("Chris", 0, height-(Button.H*2));
+ chat3 = new Button ("Robert", 0, height-Button.H);
  
  textBoxLayout();
  
@@ -55,20 +61,44 @@ void draw(){
  method("chat"+chatno);
  
  if (chatno == 1) {
-  for (TEXTBOX t : textboxes) {
-   t.DRAW();
+   TEXTBOX t1 = textboxes.get(0);
+   t1.DRAW();
  }
+ 
+ if (chatno == 2) {
+   TEXTBOX t2 = textboxes.get(1);
+   t2.DRAW();
  }
-}
+ 
+ if (chatno == 3) {
+   TEXTBOX t3 = textboxes.get(2);
+   t3.DRAW();
+ }
+ 
+ if (send) {
+   for ( int j = 0; j<msgs.size(); j++){
+   text(msgs.get(j), width/2 + (Button.W/2), msgH);
+   if (j < msgs.size()){
+       msgH += 10;
+     println("j: " + j);
+   }
+  } 
+ }
+ println("Number of messages: " + msgs.size());
+   println("message position height: " + msgH);
+ }
+
+
+
 
 void textBoxLayout(){
-  TEXTBOX chadrec = new TEXTBOX(width/2, height/2, 300, 35);
+  TEXTBOX chadrec = new TEXTBOX((0+Button.W)+3, height-80, (width-Button.W)-5, 35);
   textboxes.add(chadrec);
   
-  TEXTBOX chrisrec = new TEXTBOX(width/2, height/2, 300, 35);
+  TEXTBOX chrisrec = new TEXTBOX((0+Button.W)+3, height-60, (width-Button.W)-5, 35);
   textboxes.add(chrisrec);
   
-  TEXTBOX robertrec = new TEXTBOX(width/2, height/2, 300, 35);
+  TEXTBOX robertrec = new TEXTBOX((0+Button.W)+3, height-40, (width-Button.W)-5, 35);
   textboxes.add(robertrec);
 }
   
@@ -114,6 +144,10 @@ void mousePressed(){
 
 void keyPressed() {
   for (TEXTBOX t : textboxes) {
-    t.KEYPRESSED(key, keyCode);
+    if (t.KEYPRESSED(key, keyCode)) {
+      send = true;
+      msg = textboxes.get(0).Text;
+      msgs.add(msg);
   }
+}
 }
