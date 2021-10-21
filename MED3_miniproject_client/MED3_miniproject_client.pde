@@ -77,7 +77,7 @@ void draw(){
  
  if (send) {
    for ( int j = 0; j<msgs.size(); j++){
-   text(msgs.get(j), width/2 + (Button.W/2), msgH);
+     text(msgs.get(j), width/2 + (Button.W/2), msgH);
    if (j < msgs.size()){
        msgH += 10;
      println("j: " + j);
