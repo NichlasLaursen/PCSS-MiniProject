@@ -67,7 +67,7 @@ public class TEXTBOX {
    }
    
    private void addText(char text) {
-      // IF THE TEXT WIDHT IS IN BOUNDARIES OF THE TEXTBOX
+      // IF THE TEXT WIDTH IS IN BOUNDARIES OF THE TEXTBOX
       if (textWidth(Text + text) < W) {
          Text += text;
          TextLength++;

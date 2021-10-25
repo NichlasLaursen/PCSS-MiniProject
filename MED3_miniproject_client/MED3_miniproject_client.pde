@@ -24,6 +24,7 @@ int chatno;
 
 ArrayList<TEXTBOX> textboxes = new ArrayList<TEXTBOX>();
 ArrayList<String> msgs = new ArrayList<String>();
+ArrayList<Message> textMessage = new ArrayList<Message> ();
 
 void setup(){
  size(1000,700);
@@ -75,15 +76,10 @@ void draw(){
    t3.DRAW();
  }
  
- if (send) {
-   for ( int j = 0; j<msgs.size(); j++){
-     text(msgs.get(j), width/2 + (Button.W/2), msgH);
-   if (j < msgs.size()){
-       msgH += 10;
-     println("j: " + j);
-   }
-  } 
+ for (int i = 0; i < textMessage.size(); i++) {
+   textMessage.get(i).Update();
  }
+ 
  println("Number of messages: " + msgs.size());
    println("message position height: " + msgH);
  }
@@ -145,9 +141,10 @@ void mousePressed(){
 void keyPressed() {
   for (TEXTBOX t : textboxes) {
     if (t.KEYPRESSED(key, keyCode)) {
-      send = true;
-      msg = textboxes.get(0).Text;
-      msgs.add(msg);
+      for (Message m : textMessage) {
+      m.MoveUp ();
+      }
+     textMessage.add(new Message(new PVector(width/2, textboxes.get(0).Y-10),textboxes.get(0).Text));
   }
 }
 }
