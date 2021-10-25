@@ -41,7 +41,6 @@ public class Server {
         ServerSocket serverSocket = new ServerSocket(8000); //Server will be listening for clients here.
         Server server = new Server(serverSocket); //takes the connected serverSocket as argument for the Server class constructor.
         server.startServer();
-
     }
 
 }

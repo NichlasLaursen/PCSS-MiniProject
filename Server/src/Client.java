@@ -43,6 +43,21 @@ public class Client {
          closeEverything(socket, bufferedWriter, bufferedReader);
      }
  }
+
+ public void sendMessageNew(String msg) {
+     try {
+         bufferedWriter.write(username + "\n");
+         bufferedWriter.write(chatRoom + "\n");
+         if (socket.isConnected()) {
+             bufferedWriter.write(username + ": " + msg);
+             bufferedWriter.newLine();
+             bufferedWriter.flush();
+         }
+     } catch (IOException e) {
+         closeEverything(socket, bufferedWriter, bufferedReader);
+     }
+ }
+
  public void listenForMessage() {
      new Thread(new Runnable() {
          @Override
@@ -87,7 +102,8 @@ public class Client {
         Socket socket = new Socket("localhost",8000);
         Client client = new Client(socket, username, chatRoom);
         client.listenForMessage();
-        client.sendMessage();
+        //client.sendMessage();
+        client.sendMessageNew("Hello there");
     }
 
 }
