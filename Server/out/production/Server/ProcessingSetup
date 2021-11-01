@@ -1,0 +1,21 @@
+import java.io.*;
+import java.net.Socket;
+import java.nio.Buffer;
+import java.util.Scanner;
+
+public void setup () {
+  Scanner scanner = new Scanner(System.in);
+  /*System.out.println("Enter your username for the group chat: ");
+  String username = scanner.nextLine();
+  System.out.println("Which chat do you want to join (1,2,3 or 4?)"); //--------------------------------
+  String chatRoom = scanner.nextLine();*/
+  try {
+    Socket socket = new Socket("localhost",8000);
+    Client client = new Client(socket, "ProcessingYay","1");
+    client.listenForMessage();
+    //client.sendMessage();
+    client.sendMessageNew("Hello there");
+  } catch (IOException e) {
+
+  }
+}
