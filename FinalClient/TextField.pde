@@ -1,19 +1,28 @@
+public enum Type {
+  Username,
+  Chat,
+  IP
+}
+
+
 class TextField extends Interactable { 
   
   int textLength = 0;
   int textOffSet = 20;
   boolean selected = false;
   boolean firstSelect = true;
+  Type type;
   
   color foreGround = color(0, 0, 0);
   //color Border = color(30, 30, 30);
   //int BorderWeight = 1;
   
-  TextField(PVector position, PVector size, String text, String methodToRun) {
+  TextField(PVector position, PVector size, String text, String methodToRun, Type type) {
     this.position = position; 
     this.size = size; 
     this.text = text;
     this.methodToRun = methodToRun;
+    this.type = type;
   }
   
   void update() {
@@ -62,6 +71,14 @@ class TextField extends Interactable {
              addText(' ');
          } else if (KEYCODE == (int)ENTER) {
              println(text);
+             switch(type) {
+               case Username:
+                 username = text;
+                 break;
+               case Chat:
+                 if(pages[2] instanceof ChatPage) ((ChatPage)pages[2]).getChat().receiveMessage(text, false);
+                 break;
+             }
              cleanText();
              return true;
          } else {

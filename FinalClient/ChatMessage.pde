@@ -11,7 +11,7 @@ public class ChatMessage {
   }
   
   public void addMargin() {
-    position.y += margin;
+    position.y -= margin;
   }
   
   public void update() {

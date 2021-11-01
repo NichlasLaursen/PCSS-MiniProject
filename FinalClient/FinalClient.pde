@@ -30,11 +30,6 @@ void keyPressed() {
   for (int i = 0; i < pages.length; i++) {
      pages[i].keyPress();
   }
-  
-  if (key == ENTER) {
-    //currPage++;
-    //setPage(currPage);
-  }
 }
 
 public void setInitialData() {
@@ -59,7 +54,7 @@ public void nextPage() {
 
 public void setPage(int index) {
   if (index < pages.length) {
-    for (int i = 0; i < 0; i++) {
+    for (int i = 0; i < pages.length; i++) {
       pages[i].setActive(false);
     }
     pages[index].setActive();
@@ -67,4 +62,21 @@ public void setPage(int index) {
   } else {
     print ("Index out of bounds");
   }
+  
+  
+}
+
+public void setRoom1() {
+  room = "1";
+  newConnection();
+}
+
+public void setRoom2() {
+  
+}
+
+
+public void newConnection() {
+    if(pages[2] instanceof ChatPage) ((ChatPage)pages[2]).getChat().connectToServer(username, room);
+    nextPage();
 }

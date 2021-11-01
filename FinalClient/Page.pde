@@ -46,7 +46,7 @@ public class Page {
   
   public void update() {
     if (active) {
-      background(bckColour);
+       background(bckColour);
       fill(color(textColour));
       textAlign(LEFT);
       text(title, 10, 25);
@@ -54,6 +54,9 @@ public class Page {
       for (Chat chat : chats) { 
         chat.update();
       }
+      
+      
+      
       for (Button button : buttons) { 
         button.update();
       }
@@ -61,6 +64,8 @@ public class Page {
         textField.update();
         //textField.pressed();
       }
+      
+     
     }
   }
 }  

@@ -10,22 +10,28 @@ public class Chat {
     this.position = position;
     this.size = size;
     
-    connectToServer();
   }
   
   public void update () {
     
     fill(colour); 
     rect(position.x, position.y, size.x, size.y);
+    
+    for (ChatMessage chatMessage : messages) { 
+
+      chatMessage.update();
+    }
   }
   
   public void sendMessage(String msg) {
+    
     client.sendMessageNew(msg);
     receiveMessage(msg, true);
   }
   
   public void receiveMessage(String msg, boolean fromMe) {
-    for (ChatMessage chatMessage : messages) { 
+  for (ChatMessage chatMessage : messages) { 
+       
       chatMessage.addMargin();
     }
     
@@ -37,13 +43,15 @@ public class Chat {
     }
     
     messages.add(new ChatMessage(newPos, msg, fromMe));
+    print ("Hello there");
   }
   
-  private void connectToServer () {
+  private void connectToServer (String username, String room) {
     try {
       socket = new Socket("localhost",8000);
       client = new Client(socket, username, room);
       client.listenForMessage();
+      print("Connected to server as: " + username + " in room: " + room);
     } catch (IOException e) {
   
     }
