@@ -1,5 +1,5 @@
 public class ChatPage extends Page {
-  private Chat chat = new Chat(new PVector(0, 40), new PVector(500, 300));
+  private Chat chat = new Chat(new PVector(0, 0), new PVector(500, 350));
   //private textFields.add(new TextField())
   
   public ChatPage() {
@@ -13,6 +13,7 @@ public class ChatPage extends Page {
       chat.update();
       
       textAlign(CENTER);
+      fill(0, 255, 0);
       text("[" + "Room: " + room + "]", width/2, height/8);
       fill(color(0,0,0));
       text("[" + username + "]", width/2, height/1.2);

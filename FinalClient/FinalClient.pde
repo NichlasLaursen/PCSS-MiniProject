@@ -35,7 +35,7 @@ void keyPressed() {
 public void setInitialData() {
   Random r = new Random();
   username = "Per" + r.nextInt(1000);
-  room = "Room1";
+  room = "1";
 }
 
 public void updatePages() {
@@ -44,9 +44,6 @@ public void updatePages() {
   }
 }
 
-public void Hej() {
-
-}
 public void nextPage() {
     currPage++;
     setPage(currPage);
@@ -59,8 +56,6 @@ public void setPage(int index) {
     }
     pages[index].setActive();
     redraw();
-  } else {
-    print ("Index out of bounds");
   }
   
   

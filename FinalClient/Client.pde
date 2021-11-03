@@ -45,13 +45,17 @@ public class Client {
     }
 
     public void sendMessageNew(String msg) {
+        print(msg + " sent");
         try {
             bufferedWriter.write(username + "\n");
             bufferedWriter.write(chatRoom + "\n");
+            
             if (socket.isConnected()) {
-                bufferedWriter.write(username + ": " + msg);
+              
+                bufferedWriter.write(msg + " - " + username);
                 bufferedWriter.newLine();
                 bufferedWriter.flush();
+                
             }
         } catch (IOException e) {
             closeEverything(socket, bufferedWriter, bufferedReader);
@@ -64,9 +68,11 @@ public class Client {
             public void run() {
                 String messageFromGroupChat;
                 while (socket.isConnected()){
+                    println("Is Connected");
                     try {
                         messageFromGroupChat = bufferedReader.readLine();
-                        System.out.println(messageFromGroupChat);
+                        println(messageFromGroupChat);
+                        //System.out.println(messageFromGroupChat);
                         if(pages[2] instanceof ChatPage) ((ChatPage)pages[2]).getChat().receiveMessage(messageFromGroupChat, false);
                         
                     } catch (IOException e) {

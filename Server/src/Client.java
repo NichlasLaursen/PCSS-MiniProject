@@ -102,8 +102,8 @@ public class Client {
         Socket socket = new Socket("localhost",8000);
         Client client = new Client(socket, username, chatRoom);
         client.listenForMessage();
-        //client.sendMessage();
-        client.sendMessageNew("Hello there");
+        client.sendMessage();
+        //client.sendMessageNew("Hello from other client");
     }
 
 }

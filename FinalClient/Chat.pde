@@ -21,6 +21,7 @@ public class Chat {
 
       chatMessage.update();
     }
+     
   }
   
   public void sendMessage(String msg) {
@@ -43,7 +44,7 @@ public class Chat {
     }
     
     messages.add(new ChatMessage(newPos, msg, fromMe));
-    print ("Hello there");
+    //print ("Hello there");
   }
   
   private void connectToServer (String username, String room) {

@@ -23,7 +23,7 @@ class Interactable {
     //Runs method if the interactable prompt is pressed
     if (overBox()) {
       method(methodToRun);
-      println("Interactable");
+      //println("Interactable");
     }
   }
 

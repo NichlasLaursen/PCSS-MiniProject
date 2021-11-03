@@ -58,7 +58,7 @@ class TextField extends Interactable {
   void keyPress() {
     if (selected && key == ENTER) {
       method(methodToRun);
-      println("TextField");
+      //println("TextField");
     }
   }
   
@@ -80,7 +80,7 @@ class TextField extends Interactable {
                  username = text;
                  break;
                case Chat:
-                 if(pages[2] instanceof ChatPage) ((ChatPage)pages[2]).getChat().receiveMessage(text, false);
+                 if(pages[2] instanceof ChatPage) ((ChatPage)pages[2]).getChat().sendMessage(text);
                  break;
              }
              cleanText();
