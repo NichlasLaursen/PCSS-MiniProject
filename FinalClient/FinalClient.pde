@@ -56,6 +56,8 @@ public void setPage(int index) {
     }
     pages[index].setActive();
     redraw();
+    
+    //dsalf sjdf
   }
   
   
