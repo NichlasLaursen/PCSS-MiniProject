@@ -7,6 +7,7 @@ class Button extends Interactable {
     this.methodToRun = methodToRun;
   }
 
+  //Overides Interactable click method
   void click() {
     if (overBox()) {
       method(methodToRun);

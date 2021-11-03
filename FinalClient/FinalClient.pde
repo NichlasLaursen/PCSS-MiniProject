@@ -72,9 +72,19 @@ public void setRoom1() {
 }
 
 public void setRoom2() {
-  
+  room = "2";
+  newConnection();
 }
 
+public void setRoom3() {
+  room = "3";
+  newConnection();
+}
+
+public void setRoom4() {
+  room = "4";
+  newConnection();
+}
 
 public void newConnection() {
     if(pages[2] instanceof ChatPage) ((ChatPage)pages[2]).getChat().connectToServer(username, room);

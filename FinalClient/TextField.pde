@@ -4,7 +4,6 @@ public enum Type {
   IP
 }
 
-
 class TextField extends Interactable { 
   
   int textLength = 0;
@@ -17,6 +16,7 @@ class TextField extends Interactable {
   //color Border = color(30, 30, 30);
   //int BorderWeight = 1;
   
+  //Constructor
   TextField(PVector position, PVector size, String text, String methodToRun, Type type) {
     this.position = position; 
     this.size = size; 
@@ -25,9 +25,9 @@ class TextField extends Interactable {
     this.type = type;
   }
   
+  //Overides Interactable update method
   void update() {
-    
-    // DRAWING THE BACKGROUND
+    // DRAWING THE TEXTFIELD
     if (selected) {
        fill(normalColour);
     } else {
@@ -44,6 +44,7 @@ class TextField extends Interactable {
     // CHECKS IF TEXTFIELD IS SELECTED AND ENTER IS PRESSED
   }
   
+  //Overides Interactable click method
   void click() {
     pressed();
     
@@ -63,12 +64,15 @@ class TextField extends Interactable {
   
   
    boolean keypressed(char KEY, int KEYCODE) {
+     // CHECKS IF TEXTFIELD IS SELECTED
       if (selected) {
+         // CHECKS IF BACKSPACE IS PRESSED
          if (KEYCODE == (int)BACKSPACE) {
              backSpace();
          } else if (KEYCODE == 32) {
-             // SPACE
+           // CHECKS IF SPACE IS PRESSED
              addText(' ');
+           // CHECKS IF ENTER IS PRESSED
          } else if (KEYCODE == (int)ENTER) {
              println(text);
              switch(type) {
@@ -119,6 +123,7 @@ class TextField extends Interactable {
    }
    
    void cleanText() {
+     textLength = 0;
      text = "";
    }
    

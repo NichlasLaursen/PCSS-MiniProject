@@ -9,6 +9,7 @@ class Interactable {
   boolean isHovering;
   
   void update() {
+    //Visual elements of interactable prompts
     textAlign(CENTER, CENTER);
     fill(overBox()? hoverColor : normalColour);
     rect(position.x, position.y, size.x, size.y);
@@ -19,12 +20,14 @@ class Interactable {
   }
   
   void click() {
+    //Runs method if the interactable prompt is pressed
     if (overBox()) {
       method(methodToRun);
       println("Interactable");
     }
   }
 
+  //Boolean for checking if those is over the specified box
   public boolean overBox() {
     return isHovering = mouseX > position.x & mouseX < position.x + size.x 
     & mouseY > position.y & mouseY < position.y + size.y;

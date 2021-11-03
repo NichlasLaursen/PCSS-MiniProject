@@ -46,7 +46,7 @@ public class Page {
   
   public void update() {
     if (active) {
-       background(bckColour);
+      background(bckColour);
       fill(color(textColour));
       textAlign(LEFT);
       text(title, 10, 25);
