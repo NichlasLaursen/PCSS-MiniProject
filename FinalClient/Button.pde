@@ -11,8 +11,6 @@ class Button extends Interactable {
   void click() {
     if (overBox()) {
       method(methodToRun);
-      //println("Button");
     }
   }
-  
 }

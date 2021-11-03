@@ -32,9 +32,6 @@ public class Page {
   
   public void click() {
     if (active) {
-      for (Chat chat : chats) { 
-        //chat.click();
-      }
       for (Button button : buttons) { 
         button.click();
       }
@@ -53,19 +50,13 @@ public class Page {
     
       for (Chat chat : chats) { 
         chat.update();
-      }
-      
-      
-      
+      }     
       for (Button button : buttons) { 
         button.update();
       }
       for (TextField textField : textFields) { 
         textField.update();
-        //textField.pressed();
       }
-      
-     
     }
   }
 }  

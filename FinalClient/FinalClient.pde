@@ -4,6 +4,11 @@ Page[] pages = new Page[3];
 String username, room;
 int currPage = 0;
 
+color GREEN = color (0, 255, 0);
+color BLUE  = color (100, 100, 255);
+color BLACK = color (10, 10, 10);
+color GREY  = color (100, 100, 100);
+
 public void setup () {
   size(500, 500);
   
@@ -56,13 +61,10 @@ public void setPage(int index) {
     }
     pages[index].setActive();
     redraw();
-    
-    //dsalf sjdf
   }
-  
-  
 }
 
+//We couldn´t send room name as an argument starting a new thread, we know this is bad practice
 public void setRoom1() {
   room = "1";
   newConnection();

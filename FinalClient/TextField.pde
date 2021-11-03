@@ -13,8 +13,6 @@ class TextField extends Interactable {
   Type type;
   
   color foreGround = color(0, 0, 0);
-  //color Border = color(30, 30, 30);
-  //int BorderWeight = 1;
   
   //Constructor
   TextField(PVector position, PVector size, String text, String methodToRun, Type type) {
@@ -40,8 +38,6 @@ class TextField extends Interactable {
     fill(textColor);
     textSize(textSize);
     text(text, position.x + size.x/textOffSet, position.y + size.y/2);
-    
-    // CHECKS IF TEXTFIELD IS SELECTED AND ENTER IS PRESSED
   }
   
   //Overides Interactable click method
@@ -58,10 +54,8 @@ class TextField extends Interactable {
   void keyPress() {
     if (selected && key == ENTER) {
       method(methodToRun);
-      //println("TextField");
     }
   }
-  
   
    boolean keypressed(char KEY, int KEYCODE) {
      // CHECKS IF TEXTFIELD IS SELECTED
@@ -125,9 +119,5 @@ class TextField extends Interactable {
    void cleanText() {
      textLength = 0;
      text = "";
-   }
-   
-   void commit(String currentText) {
-     
    }
 }

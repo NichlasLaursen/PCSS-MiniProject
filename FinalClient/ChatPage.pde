@@ -13,9 +13,9 @@ public class ChatPage extends Page {
       chat.update();
       
       textAlign(CENTER);
-      fill(0, 255, 0);
+      fill(GREEN);
       text("[" + "Room: " + room + "]", width/2, height/8);
-      fill(color(0,0,0));
+      fill(color(BLACK));
       text("[" + username + "]", width/2, height/1.2);
     }
   }

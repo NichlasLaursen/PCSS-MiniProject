@@ -9,33 +9,27 @@ public class Chat {
   public Chat(PVector position, PVector size) {
     this.position = position;
     this.size = size;
-    
   }
   
-  public void update () {
-    
+  public void update () {  
     fill(colour); 
-    rect(position.x, position.y, size.x, size.y);
-    
+    rect(position.x, position.y, size.x, size.y); 
     for (ChatMessage chatMessage : messages) { 
-
       chatMessage.update();
-    }
-     
+    }   
   }
   
   public void sendMessage(String msg) {
-    
     client.sendMessageNew(msg);
     receiveMessage(msg, true);
   }
   
   public void receiveMessage(String msg, boolean fromMe) {
   for (ChatMessage chatMessage : messages) { 
-       
       chatMessage.addMargin();
     }
     
+    //Change message position depending on who send it
     PVector newPos;
     if (fromMe) {
       newPos = new PVector(margin, size.y + margin);
@@ -44,7 +38,6 @@ public class Chat {
     }
     
     messages.add(new ChatMessage(newPos, msg, fromMe));
-    //print ("Hello there");
   }
   
   private void connectToServer (String username, String room) {

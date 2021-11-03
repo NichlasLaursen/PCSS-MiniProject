@@ -15,20 +15,14 @@ public class ChatMessage {
   }
   
   public void update() {
-    
-    
     if (myMessage) {
-      fill(color(0,255,0));
+      fill(GREEN);
       textAlign(LEFT);
       text(username + " - " + message, position.x, position.y);
     } else {
-      fill(color(100,100,255));
+      fill(color(BLUE));
       textAlign(RIGHT);
       text(message, position.x, position.y);
     }
-    
-    //text(message, position.x, position.y);
-    //textAlign(LEFT);
-    //text(username + ":", position.x-width+margin, position.y);
   }
 }
