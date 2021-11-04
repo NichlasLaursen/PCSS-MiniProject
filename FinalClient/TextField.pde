@@ -6,13 +6,13 @@ public enum Type {
 
 class TextField extends Interactable { 
   
-  int textLength = 0;
-  int textOffSet = 20;
-  boolean selected = false;
-  boolean firstSelect = true;
-  Type type;
+  private int textLength = 0;
+  private int textOffSet = 20;
+  private boolean selected = false;
+  private boolean firstSelect = true;
+  private Type type;
   
-  color foreGround = color(0, 0, 0);
+  private color foreGround = color(0, 0, 0);
   
   //Constructor
   TextField(PVector position, PVector size, String text, String methodToRun, Type type) {
