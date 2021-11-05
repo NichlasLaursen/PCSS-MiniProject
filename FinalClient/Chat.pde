@@ -4,7 +4,6 @@ public class Chat {
   private color colour = color(10,10,10);
   private ArrayList<ChatMessage> messages = new ArrayList<ChatMessage>();
   private Socket socket;
-  private Client client;
   
   public Chat(PVector position, PVector size) {
     this.position = position;
@@ -32,12 +31,12 @@ public class Chat {
     //Change message position depending on who send it
     PVector newPos;
     if (fromMe) {
-      newPos = new PVector(margin, size.y + margin);
+      newPos = new PVector(margin, size.y - margin);
     } else {
-      newPos = new PVector(size.x - margin, size.y + margin);
+      newPos = new PVector(size.x - margin, size.y - margin);
     }
-    
-    messages.add(new ChatMessage(newPos, msg, fromMe));
+
+      messages.add(new ChatMessage(newPos, msg, fromMe));
   }
   
   private void connectToServer (String username, String room) {

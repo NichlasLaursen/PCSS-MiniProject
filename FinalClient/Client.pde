@@ -34,7 +34,7 @@ public class Client {
             Scanner scanner = new Scanner(System.in);
             while(socket.isConnected()){
                 String messageToSend = scanner.nextLine();
-                bufferedWriter.write(username + ": " + messageToSend);
+                bufferedWriter.write(messageToSend + " - " + username);
                 bufferedWriter.newLine();
                 bufferedWriter.flush();
 
@@ -47,9 +47,11 @@ public class Client {
     public void sendMessageNew(String msg) {
         print(msg + " sent");
         try {
-            bufferedWriter.write(username + "\n");
-            bufferedWriter.write(chatRoom + "\n");
+            //bufferedWriter.write(username + "\n");
+            //bufferedWriter.write(chatRoom + "\n");
+            //bufferedWriter.flush();
             
+     
             if (socket.isConnected()) {
               
                 bufferedWriter.write(msg + " - " + username);
@@ -99,5 +101,16 @@ public class Client {
             e.printStackTrace();
         }
 
+    }
+    
+    public void sendInformation() {
+      try {
+        bufferedWriter.write(username + "\n");
+        bufferedWriter.write(chatRoom + "\n");
+        bufferedWriter.flush();    
+        
+        } catch (IOException e) {
+            closeEverything(socket, bufferedWriter, bufferedReader);
+        }
     }
 }

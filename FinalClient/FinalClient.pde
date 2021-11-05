@@ -8,6 +8,7 @@ color GREEN = color (0, 255, 0);
 color BLUE  = color (100, 100, 255);
 color BLACK = color (10, 10, 10);
 color GREY  = color (100, 100, 100);
+public Client client;
 
 public void setup () {
   size(500, 500);
@@ -87,5 +88,6 @@ public void setRoom4() {
 
 public void newConnection() {
     if(pages[2] instanceof ChatPage) ((ChatPage)pages[2]).getChat().connectToServer(username, room);
+    client.sendInformation();
     nextPage();
 }
